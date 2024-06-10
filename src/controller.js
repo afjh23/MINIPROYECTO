@@ -44,7 +44,7 @@ export const importUsuarios = async (req, res) => {
   try {
     const contenido = await fs.readFile('usuario.csv', 'utf-8');
     const filas = contenido.split('\n');
-    filas.shift(); // Eliminar la fila de encabezado
+    filas.shift();
 
     const errores = [];
 
@@ -78,7 +78,7 @@ export const importUsuarios = async (req, res) => {
         );
         console.log('Se insertó el usuario', nombres);
       } catch (error) {
-        console.log('Error de inserción:', error); // Agregar este log para inspeccionar errores
+        console.log('Error de inserción:', error); 
 
         if (error.errno === 1062) {
           const mensajeError = `No se insertó el usuario ${nombres} - Usuario duplicado`;
